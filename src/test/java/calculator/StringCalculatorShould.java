@@ -27,5 +27,10 @@ class StringCalculatorShould {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(6, stringCalculator.add("1,2,3"));
     }
+    @Test
+    void string_with_newline_insted_of_comma() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(6, stringCalculator.add("1\n2,3"));
+    }
    
 }
