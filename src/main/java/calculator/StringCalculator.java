@@ -11,7 +11,7 @@ class StringCalculator {
     		return stringToInt(input);
     	}
     	else {
-    		return getsum(numbers[0], numbers[1]);
+    		return getsum(numbers);
     	}
     	
     	
@@ -20,8 +20,12 @@ class StringCalculator {
     private boolean isEmpty(String input) {
     	return input.isEmpty()
 ;    }
-    private int getsum(String num1,String num2) {
-    	return stringToInt(num1)+stringToInt(num2);
+    private int getsum(String[] num) {
+    	int sum=0;
+    	for(int i=0;i<num.length;i++) {
+    		sum=sum+Integer.parseInt(num[i]);
+    	}
+    	return sum;
     }
     private int stringToInt(String input) {
 		return Integer.parseInt(input);
