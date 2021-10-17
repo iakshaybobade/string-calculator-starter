@@ -7,9 +7,14 @@ class StringCalculator {
     		return 0;
     	}
     	else {
-    		return Integer.parseInt(input);
+    		return stringToInt(input);
     	}
-        
+    	
+    	
+    } private int stringToInt(String input) {
+		return Integer.parseInt(input);
+    	
     }
+   
 
 } 
