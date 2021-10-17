@@ -1,11 +1,14 @@
 package calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 class StringCalculator {
 
-	private final String delimiter=",|\n";
+	
 	public int add(String input) {
 		
-		String[] numbers = input.split(delimiter);
+		String[] numbers = Convert(input);
 		if (isEmpty(input)) {
 			return 0;
 		}
@@ -16,7 +19,21 @@ class StringCalculator {
 		}
 
 	}
-
+	private static String[] Convert(String numbers) {
+		if(numbers.startsWith("//")) {
+			Matcher m= Pattern.compile("//(.)\n(.*)").matcher(numbers);
+			m.matches();
+			String customDelimiter=m.group(1);
+			String nums=m.group(2);
+			System.out.println(nums);
+			return nums.split(customDelimiter);
+		}
+		else {
+			String[] nums=numbers.split (",|\n");
+			return nums;
+		}
+		
+	}
 	private boolean isEmpty(String input) {
 		return input.isEmpty();
 	}
