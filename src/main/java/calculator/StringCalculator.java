@@ -21,18 +21,23 @@ class StringCalculator {
 	}
 	private static String[] Convert(String numbers) {
 		if(numbers.startsWith("//")) {
-			Matcher m= Pattern.compile("//(.)\n(.*)").matcher(numbers);
-			m.matches();
-			String customDelimiter=m.group(1);
-			String nums=m.group(2);
-			System.out.println(nums);
-			return nums.split(customDelimiter);
+			return compareWithCustomDelimiter(numbers);
 		}
 		else {
-			String[] nums=numbers.split (",|\n");
-			return nums;
+			return compareWithnewlineAndComma(numbers);
 		}
-		
+	}
+	private static String[] compareWithCustomDelimiter(String numbers) {
+		Matcher m= Pattern.compile("//(.)\n(.*)").matcher(numbers);
+		m.matches();
+		String customDelimiter=m.group(1);
+		String nums=m.group(2);
+		System.out.println(nums);
+		return nums.split(customDelimiter);
+	}
+	private static String[] compareWithnewlineAndComma(String numbers) {
+		String[] nums=numbers.split (",|\n");
+		return nums;
 	}
 	private boolean isEmpty(String input) {
 		return input.isEmpty();
