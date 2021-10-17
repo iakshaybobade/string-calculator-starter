@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 class StringCalculator {
 
 	
-	public int add(String input) {
+	public int add(String input) throws Exception {
 		
 		String[] numbers = Convert(input);
 		if (isEmpty(input)) {
@@ -43,14 +43,24 @@ class StringCalculator {
 		return input.isEmpty();
 	}
 
-	private int getsum(String[] num) {
+	private int getsum(String[] num) throws Exception {
+		findInvalidInput(num);
 		int sum = 0;
 		for (String i:num) {
 			sum = sum + stringToInt(i);
 		}
 		return sum;
 	}
-
+	
+	private void findInvalidInput(String[] numbers) throws Exception{
+		StringBuilder S1=new StringBuilder();
+		for(String i:numbers) {
+			if(stringToInt(i)<0) {
+				S1.append(i);
+				throw new IllegalArgumentException("Negative number not allowed");
+			}
+		}
+	}
 	private int stringToInt(String input) {
 		return Integer.parseInt(input);
 
