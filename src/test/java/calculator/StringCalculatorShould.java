@@ -43,7 +43,7 @@ class StringCalculatorShould {
     @Test
     void string_with_M() throws Exception { 
         StringCalculator stringCalculator = new StringCalculator();
-        assertEquals(3, stringCalculator.add("M*1,4,2"));
+        assertEquals(21, stringCalculator.add("M*1,4,2"));
     }
     @Rule
     public ExpectedException expectedexception= ExpectedException.none();

@@ -23,6 +23,9 @@ class StringCalculator {
 		if(numbers.startsWith("//")) {
 			return compareWithCustomDelimiter(numbers);
 		}
+		if(numbers.startsWith("M")) {
+			return compareWithCustomDelimiterNewCase(numbers);
+		}
 		else {
 			return compareWithnewlineAndComma(numbers);
 		}
@@ -34,6 +37,20 @@ class StringCalculator {
 		String nums=m.group(2);
 		System.out.println(nums);
 		return nums.split(customDelimiter);
+	}
+	private static String[] compareWithCustomDelimiterNewCase(String numbers) {
+		
+		String[] nums=numbers.split ("\\*");
+		//System.out.println(nums);
+		String[] nums2=compareWithnewlineAndComma(nums[1]);
+		for(int i=0;i<nums2.length;i++) {
+			int temp=Integer.parseInt(nums2[i]);
+			temp=temp*3;
+			
+			nums2[i]=String.valueOf(temp);
+		}
+		
+		return nums2;
 	}
 	private static String[] compareWithnewlineAndComma(String numbers) {
 		String[] nums=numbers.split (",|\n");
