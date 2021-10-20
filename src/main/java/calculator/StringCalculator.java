@@ -52,12 +52,12 @@ class StringCalculator {
 		return sum;
 	}
 	
-	private void findInvalidInput(String[] numbers) throws Exception{
+	private void findInvalidInput(String[] numbers)throws Exception{
 		StringBuilder S1=new StringBuilder();
 		for(String i:numbers) {
 			if(stringToInt(i)<0) {
 				S1.append(i);
-				throw new IllegalArgumentException("Negative number not allowed");
+				throw new Exception("negatives not allowed"+S1.toString());
 			}
 		}
 	}

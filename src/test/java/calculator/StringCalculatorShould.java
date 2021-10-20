@@ -16,7 +16,7 @@ class StringCalculatorShould {
     }
 
     @Test
-    void string_with_single_number_should_return_number_as_int() throws Exception {
+    void string_with_single_number_should_return_number_as_int() throws Exception{
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(1, stringCalculator.add("1"));
     }
@@ -40,14 +40,20 @@ class StringCalculatorShould {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(3, stringCalculator.add("//;\n1;2"));
     }
+    @Test
+    void string_with_M() throws Exception { 
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3, stringCalculator.add("M*1,4,2"));
+    }
     @Rule
     public ExpectedException expectedexception= ExpectedException.none();
+    
     @Test
-    void string_with_negative_values() throws Exception  { 
+    void string_with_negative_values() throws Exception { 
     	expectedexception.expect(Exception.class);
     	expectedexception.expectMessage("negatives not allowed-1");
     	StringCalculator stringCalculator = new StringCalculator();
-    	stringCalculator.add("-1,4,-4");
+    	stringCalculator.add("-1");
     }
     
    
